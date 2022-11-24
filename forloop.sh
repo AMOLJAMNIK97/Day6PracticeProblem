@@ -1,11 +1,35 @@
-read -p "Enter a number: " num
+if [ $# -eq 0 ]
 
-factorial=1
+then
 
-for (( i=1; i<=num; i++ ))
+echo "Error! Please provide a number"
+
+exit 1
+
+fi
+
+N=$1
+
+i=2
+
+while [ $i -lt $N ]
+
 do
-    factorial=$(( factorial * i ))
+
+if [ $(($N%$i)) -eq 0 ]
+
+then
+
+echo $i
+
+N=$(($N/$i))
+
+else
+
+i=$(($i+1))
+
+fi
+
 done
 
-echo "Factorial of $num: $factorial"
-
+echo $N
